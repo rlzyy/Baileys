@@ -38,7 +38,7 @@ yarn add @whiskeysockets/baileys
 
 Use the edge version (no guarantee of stability, but latest fixes + features)
 ```
-yarn add github:WhiskeySockets/Baileys
+yarn add github:DannOfficial/Baileys
 ```
 
 Then import your code using:
@@ -860,9 +860,21 @@ sock.sendMessage(jid, {image: {url: url}, caption: caption}, {backgroundColor : 
 - Broadcast IDs are in the format `12345678@broadcast`
 - To query a broadcast list's recipients & name:
     ``` ts
-    const bList = await sock.getBroadcastListInfo("1234@broadcast")
+    const bList = await sock.broadcastList("1234@broadcast")
     console.log (`list name: ${bList.name}, recps: ${bList.recipients}`)
     ```
+
+- Broadcast Status (reaction)
+- Broadcast IDs are in the format `12345678@broadcast`
+- Key IDs are in the format `xxxx`
+
+  ```js
+  if (m.key.remoteJid === "status@broadcast") {
+    if (m.type === "reaction") {
+      const emote = [""]
+    }
+  }
+  ``
 
 ## Writing Custom Functionality
 Baileys is written with custom functionality in mind. Instead of forking the project & re-writing the internals, you can simply write your own extensions.
