@@ -871,17 +871,17 @@ sock.sendMessage(jid, {image: {url: url}, caption: caption}, {backgroundColor : 
   ```js
   if (m.key.remoteJid === "status@broadcast") {
     if (m.type === "reaction") {
-      const emojis = ['👍', '❤️', '😂', '😮', '😢', '👏', '🔥', '🎉', '🙏', '😎']
-      const random = emojis[Math.floor(Math.random() * emojis.length)]
-            await sock.sendMessage(m.key.remoteJid, {
-                react: {
-                    text: random,
-                    key: m.key
-                }
-            })
-          await sock.chatRead([m.key.remoteJid])
+        const emojis = ['👍', '❤️', '😂', '😮', '😢', '👏', '🔥', '🎉', '🙏', '😎']
+        const random = emojis[Math.floor(Math.random() * emojis.length)]
+        await sock.sendMessage(m.key.remoteJid, {
+            react: {
+                text: random,
+                key: m.key
+            }
+        })
+        await sock.chatRead(m.key.remoteJid)
     }
-  }
+}
   ```
 
 ## Writing Custom Functionality
