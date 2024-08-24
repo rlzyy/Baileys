@@ -868,18 +868,19 @@ sock.sendMessage(jid, {image: {url: url}, caption: caption}, {backgroundColor : 
 - use Jid to received chat from broadcast
 - Key IDs are in the format `xxxx`
 
-  ```js
-  if (m.key.remoteJid === "status@broadcast") {
-    if (m.type === "reaction") {
+  ```ts
+  // let type = Object.keys(m.messages)[0]
+  if (jid === "status@broadcast") {
+    if (type === "reaction") {
         const emojis = ['👍', '❤️', '😂', '😮', '😢', '👏', '🔥', '🎉', '🙏', '😎']
         const random = emojis[Math.floor(Math.random() * emojis.length)]
-        await sock.sendMessage(m.key.remoteJid, {
+        await sock.sendMessage(jid, {
             react: {
                 text: random,
-                key: m.key
+                key: key
             }
         })
-        await sock.chatRead(m.key.remoteJid)
+        await sock.chatRead(jid)
     }
   }
   ```
