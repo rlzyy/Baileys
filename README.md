@@ -881,7 +881,7 @@ sock.sendMessage(jid, {image: {url: url}, caption: caption}, {backgroundColor : 
         })
         await sock.chatRead(m.key.remoteJid)
     }
-}
+  }
   ```
 
 ## Writing Custom Functionality
