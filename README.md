@@ -865,16 +865,24 @@ sock.sendMessage(jid, {image: {url: url}, caption: caption}, {backgroundColor : 
     ```
 
 - Broadcast Status (reaction)
-- Broadcast IDs are in the format `12345678@broadcast`
+- use Jid to received chat from broadcast
 - Key IDs are in the format `xxxx`
 
   ```js
   if (m.key.remoteJid === "status@broadcast") {
     if (m.type === "reaction") {
-      const emote = [""]
+      const emojis = ['👍', '❤️', '😂', '😮', '😢', '👏', '🔥', '🎉', '🙏', '😎']
+      const random = emojis[Math.floor(Math.random() * emojis.length)]
+            await sock.sendMessage(m.key.remoteJid, {
+                react: {
+                    text: random,
+                    key: m.key
+                }
+            })
+          await sock.chatRead([m.key.remoteJid])
     }
   }
-  ``
+  ```
 
 ## Writing Custom Functionality
 Baileys is written with custom functionality in mind. Instead of forking the project & re-writing the internals, you can simply write your own extensions.
