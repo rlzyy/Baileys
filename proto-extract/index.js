@@ -3,6 +3,8 @@ const acorn = require('acorn')
 const walk = require('acorn-walk')
 const fs = require('fs/promises')
 
+//by ruji
+
 const addPrefix = (lines, prefix) => lines.map(line => prefix + line)
 
 const extractAllExpressions = (node) => {
